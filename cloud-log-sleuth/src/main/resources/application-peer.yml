@@ -1,0 +1,10 @@
+server:
+  port: 8031
+spring:
+  application:
+    name: kevin-eurka-ribbon-consumer-use-peer
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8001/eureka/,http://peer2:8002/eureka/,http://peer3:8003/eureka/

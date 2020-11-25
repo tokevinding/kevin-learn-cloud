@@ -1,0 +1,14 @@
+server:
+  port: 8012
+spring:
+  application:
+    name: kevin-eurka-feign-consumer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+#如果需要使用 hystrix 断路器，则需要添加这个配置
+feign:
+  hystrix:
+    enabled: true

@@ -1,0 +1,16 @@
+#高可用注册中心节点2
+server:
+  port: 8003
+
+eureka:
+  instance:
+    hostname: peer3
+  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://peer1:8001/eureka/,http://peer2:8002/eureka/
+
+spring:
+  application:
+    name: kevin-peer3

@@ -1,0 +1,24 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: kevin-eurka-consumer-zuul
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+#如果需要使用 hystrix 断路器，则需要添加这个配置
+feign:
+  hystrix:
+    enabled: true
+
+#如果需要使用 zuul 断路器，则需要添加这个配置
+zuul:
+  routes:
+    kevin-api-1:
+      path: /kevin-api-1/**
+      serviceId: kevin-eurka-hystrix-consumer
+    kevin-api-2:
+      path: /kevin-api-2/**
+      serviceId: kevin-eurka-feign-consumer

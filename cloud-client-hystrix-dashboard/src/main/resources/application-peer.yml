@@ -1,0 +1,12 @@
+#使用过高可用注册中心
+server:
+  port: 8050
+
+spring:
+  application:
+    name: kevin-hystrix-dashboard
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8001/eureka/,http://peer2:8002/eureka/,http://peer3:8003/eureka/

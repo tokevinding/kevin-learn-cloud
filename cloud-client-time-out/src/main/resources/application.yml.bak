@@ -1,0 +1,36 @@
+server:
+  port: 8060
+spring:
+  application:
+    name: kevin-time-out
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8001/eureka/,http://peer2:8002/eureka/,http://peer3:8003/eureka/
+###设置feign客户端超时时间
+###SpringCloud feign 默认开启支持ribbon
+ribbon:
+  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 3000
+  ###指的是建立连接后从服务器读取到可用资源所用的时间。
+  ConnectTimeout: 3000
+###配置请求超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+    ###配置具体方法超时时间
+#    serverMethod:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3000
+
+
+#如果需要使用 hystrix 断路器，则需要添加这个配置
+feign:
+  hystrix:
+    enabled: true
